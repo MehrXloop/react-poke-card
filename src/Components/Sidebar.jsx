@@ -5,19 +5,20 @@ function Sidebar(props) {
     props.handleActivePokemon(e);
   }
   return (
-    <>
-      <div>
-        <button value={props.data.previous} onClick={props.handleUrl}>Previous</button>
+    <div>
+      <div className="button-container">
+        {props.data.previous !== null ? <button value={props.data.previous} onClick={props.handleUrl}>Previous</button> : null}
+
         <button value={props.data.next} onClick={props.handleUrl}>Next</button>
       </div>
-      <div>
+      <ul>
         {props.data.results.map((item) => (
-          <p onClick={handleActivePokemon} key={item.name}>
+          <li onClick={handleActivePokemon} key={item.name}>
             {item.name}
-          </p>
+          </li>
         ))}
-      </div>
-    </>
+      </ul>
+    </div>
   );
 }
 
